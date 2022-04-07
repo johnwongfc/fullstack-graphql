@@ -1,4 +1,4 @@
-const { ApolloServer } = require('apollo-server-express');
+const { ApolloServer } = require('apollo-server');
 const gql = require('graphql-tag');
 
 const typeDefs = gql`
@@ -11,7 +11,7 @@ const typeDefs = gql`
   type Query {
     me: User!
   }
-`;
+`
 
 const resolvers = {
   Query: {
@@ -25,9 +25,7 @@ const resolvers = {
   },
 };
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-});
-
-server.listen(4000, () => console.log('on port 4000'));
+const server = new ApolloServer({ typeDefs, resolvers });
+console.log(server);
+server.listen(4000)
+  .then(() => console.log('on port 4000'))
